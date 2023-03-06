@@ -4,3 +4,9 @@ import time
 import threading
 import tkinter
 import pyaudio
+
+
+class VoiceRecorder():
+
+
+VoiceRecorder()

@@ -13,9 +13,12 @@ class VoiceRecorder():
         self.root.resizable(True, False)
         self.button = tkinter.Button(
             text="🎙️",
-            font=('Arial', 120, "bold")
+            font=('Arial', 120, "bold" ),
+            command=self.click_handler
         )
         self.button.pack()
         self.root.mainloop()
 
-VoiceRecorder()
+        
+
+def VoiceRecorder():

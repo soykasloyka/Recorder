@@ -42,3 +42,20 @@ class VoiceRecorder():
 
         frames = []
         start = time.time()
+
+        while self.recording:
+            data = stream.read(1024, exception_on_overflow=False)
+            frames.append(data)
+
+            passed = time.time() - start
+            secs = passed % 60
+            mins = passed // 60
+            hours = mins // 60
+            self.label.config(text=f"{int(hours):02d}:{int(mins):02d}:{int(secs):02d}")
+
+        stream.stop_stream()
+        stream.close()
+        audio.terminate()
+
+        exists = True
+        i = 1

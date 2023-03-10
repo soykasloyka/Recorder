@@ -59,3 +59,19 @@ class VoiceRecorder():
 
         exists = True
         i = 1
+
+        while exists:
+            if os.path.exists(f'recording{i}.wav'):
+                i += 1
+            else:
+                exists = False
+
+        sound_file = wave.open(f'recording{i}.wav', 'wb')
+        sound_file.setnchannels(1)
+        sound_file.setsampwidth(audio.get_sample_size(pyaudio.paInt16))
+        sound_file.setframerate(44100)
+        sound_file.writeframes(b''.join(frames))
+        sound_file.close()
+
+
+VoiceRecorder()
